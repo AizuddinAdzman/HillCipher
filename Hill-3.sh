@@ -3,7 +3,6 @@
 # arrayText[] = array of the inserted string
 # arrayKey[] = array of the inserted key
 
-
 # Handle input, ensure if a letter is inserted, it change into numerical.
 # Check the inserted key, validation.
 checkInput(){
@@ -50,7 +49,6 @@ inverseDeterminant(){
 		mulInverse=$int*$counter
 		inDet=$mulInverse%26
 	done
-
 	return $counter
 }
 
@@ -535,12 +533,16 @@ Start_hill_cipher(){
 loop=0
 while [[ loop -eq 0 ]]; do
 	Start_hill_cipher
-
 	echo 
 	echo "Run again? (y/n):"
 	read r
-
-	if [[ r == "n" ]]; then
+	r=`echo $r | tr '[:upper:]' '[:lower:]'`
+	while [[ $r != "y" && $r != "n" ]]; do 
+		echo "Run again? (y/n):"
+		read r
+		r=`echo $r | tr '[:upper:]' '[:lower:]'`
+	done
+	if [[ $r == "n" ]]; then
 		((loop++))
 	fi
 done
